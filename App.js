@@ -16,7 +16,7 @@ export default function App() {
         // flexWrap: "wrap",
       }}
     >
-      <View
+      {/* <View
         style={{
           backgroundColor: "blue",
           // flexBasis sets the size of the item to the primary axis (horizontal in this case)
@@ -31,7 +31,7 @@ export default function App() {
           // used for items inside the containers to align the items inside the container
           // alignSelf: "flex-start",
         }}
-      />
+      /> */}
       <View
         style={{
           backgroundColor: "gold",
@@ -44,16 +44,23 @@ export default function App() {
           backgroundColor: "tomato",
           width: 100,
           height: 100,
+          top: 20, // same as set bottom to -20
+          left: 20,
+          // in react native, all components by default have their position set to relative
+          // which means we can move them relative to their current position without change the layout around them
+          // when set the position to absolute, it change the position relative to its parent
+          // and other items(views) are repositioned / the layout around it will get affected
+          position: "absolute", // when set to relative, other items position don't move
         }}
       />
-      {/* <View
+      <View
         style={{
           backgroundColor: "grey",
           width: 100,
           height: 100,
         }}
       />
-      <View
+      {/* <View
         style={{
           backgroundColor: "greenyellow",
           width: 100,

@@ -33,7 +33,10 @@ export default function App() {
   return (
     // view is a container component for react native
     // SafeAreaView adds padding to the top ex. avoid the top black notch, etc.
-    <SafeAreaView style={styles.container}>
+    // <SafeAreaView style={containerStyle}>
+    // <SafeAreaView style={{ backgroundColor: "orange" }}>
+    // <SafeAreaView style={styles.container}></SafeAreaView>
+    <SafeAreaView style={[styles.container, containerStyle]}>
       {/* always wrap text in Text component */}
       <Text numberOfLines={2} onPress={handlePress}>
         Hello React Native - A really really long text. Now I wanna make this
@@ -57,6 +60,8 @@ export default function App() {
     </SafeAreaView>
   );
 }
+
+const containerStyle = { backgroundColor: "orange" };
 
 const styles = StyleSheet.create({
   container: {

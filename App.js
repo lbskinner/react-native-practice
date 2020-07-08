@@ -11,6 +11,7 @@ import {
   SafeAreaView,
   Button,
   Alert,
+  Platform,
 } from "react-native";
 
 export default function App() {
@@ -32,7 +33,7 @@ export default function App() {
 
   return (
     // view is a container component for react native
-    // SafeAreaView adds padding to the top ex. avoid the top black notch, etc.
+    // SafeAreaView adds padding to the top ex. avoid the top black notch, etc. only works for IOS currently
     // <SafeAreaView style={containerStyle}>
     // <SafeAreaView style={{ backgroundColor: "orange" }}>
     // <SafeAreaView style={styles.container}></SafeAreaView>
@@ -67,7 +68,9 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
+    // alignItems: "center",
+    // justifyContent: "center",
+    // currentHeight is an android only property currently, it shows the height of status bar
+    paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
   },
 });

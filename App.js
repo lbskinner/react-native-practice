@@ -9,6 +9,8 @@ import {
   TouchableHighlight,
   Image,
   SafeAreaView,
+  Button,
+  Alert,
 } from "react-native";
 
 export default function App() {
@@ -18,6 +20,14 @@ export default function App() {
 
   const handleTouchImage = () => {
     console.log("Touched Image");
+  };
+
+  const handelPressButton = () => {
+    // Alert.alert("My Title", "My Message", [
+    //   { text: "Yes", onPress: () => console.log("Yes") },
+    //   { text: "No", onPress: () => console.log("No") },
+    // ]);
+    Alert.prompt("My Title", "My Message", (text) => console.log(text));
   };
 
   return (
@@ -42,6 +52,7 @@ export default function App() {
           }}
         />
       </TouchableHighlight>
+      <Button title="Click Me" onPress={handelPressButton} color="orange" />
       <StatusBar style="auto" />
     </SafeAreaView>
   );

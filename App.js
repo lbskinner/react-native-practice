@@ -12,9 +12,23 @@ import {
   Button,
   Alert,
   Platform,
+  Dimensions,
 } from "react-native";
+// preferred way to get dimensions of screen if support multiple orientations of device
+import {
+  useDimensions,
+  useDeviceOrientation,
+} from "@react-native-community/hooks";
 
 export default function App() {
+  // get the dimensions of the device, however, it doesn't respond to orientation changes
+  // console.log(Dimensions.get("screen"));
+  // get device dimensions for orientation changes
+  // console.log(useDimensions());
+  // detects the orientation of device
+  // console.log(useDeviceOrientation());
+  const { landscape } = useDeviceOrientation();
+
   const handlePress = () => {
     console.log("Text Clicked");
   };
@@ -38,6 +52,14 @@ export default function App() {
     // <SafeAreaView style={{ backgroundColor: "orange" }}>
     // <SafeAreaView style={styles.container}></SafeAreaView>
     <SafeAreaView style={[styles.container, containerStyle]}>
+      <View
+        style={{
+          backgroundColor: "blue",
+          // takes exactly half of the screen
+          width: "100%",
+          height: landscape ? "100%" : "30%",
+        }}
+      ></View>
       {/* always wrap text in Text component */}
       <Text numberOfLines={2} onPress={handlePress}>
         Hello React Native - A really really long text. Now I wanna make this
@@ -57,7 +79,7 @@ export default function App() {
         />
       </TouchableHighlight>
       <Button title="Click Me" onPress={handelPressButton} color="orange" />
-      <StatusBar style="auto" />
+      {/* <StatusBar style="auto" /> */}
     </SafeAreaView>
   );
 }

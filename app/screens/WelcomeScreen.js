@@ -1,5 +1,9 @@
 import React from "react";
 import { ImageBackground, StyleSheet, Image, Text, View } from "react-native";
+// the library below is part of expo package
+import { MaterialCommunityIcons } from "@expo/vector-icons";
+
+import AppText from "../components/AppText";
 
 function WelcomeScreen() {
   return (
@@ -9,8 +13,9 @@ function WelcomeScreen() {
     >
       <View style={styles.logoContainer}>
         <Image source={require("../assets/logo-red.png")} style={styles.logo} />
-        <Text>Sell What You Don't Need</Text>
+        <AppText>Sell What You Don't Need</AppText>
       </View>
+      <MaterialCommunityIcons name="email" size={100} color="dodgerblue" />
       <View style={styles.loginButton}></View>
       <View style={styles.registerButton}></View>
     </ImageBackground>

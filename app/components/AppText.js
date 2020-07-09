@@ -9,8 +9,20 @@ function AppText({ children }) {
 
 const styles = StyleSheet.create({
   text: {
-    fontSize: 18,
-    fontFamily: Platform.OS === "android" ? "Roboto" : "Avenir",
+    color: "tomato",
+    // select() is a method on Platform object
+    // this method takes in object, optional key value pairs
+
+    ...Platform.select({
+      ios: {
+        fontSize: 20,
+        fontFamily: "Avenir",
+      },
+      android: {
+        fontSize: 18,
+        fontFamily: "Roboto",
+      },
+    }),
   },
 });
 

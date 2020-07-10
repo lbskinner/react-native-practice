@@ -3,7 +3,9 @@ import { ImageBackground, StyleSheet, Image, Text, View } from "react-native";
 // the library below is part of expo package
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
+// can import AppText this way when an index.js files has been created in the AppText file
 import AppText from "../components/AppText";
+// import AppText from "../components/AppText/AppText";
 
 function WelcomeScreen() {
   return (

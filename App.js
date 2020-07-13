@@ -8,13 +8,13 @@ import Card from "./app/components/Card";
 import ListingDetailsScreen from "./app/screens/ListingDetailsScreen";
 export default function App() {
   return (
-    <ListingDetailsScreen />
+    // <ListingDetailsScreen />
 
-    // <View style={styles.container}>
-    //   <WelcomeScreen />
-    //   {/* <ViewImageScreen /> */}
-    //   {/* <AppButton title="Login" onPress={() => console.log("Button Clicked")} /> */}
-    // </View>
+    <View style={styles.container}>
+      {/* <WelcomeScreen /> */}
+      <ViewImageScreen />
+      {/* <AppButton title="Login" onPress={() => console.log("Button Clicked")} /> */}
+    </View>
   );
 }
 

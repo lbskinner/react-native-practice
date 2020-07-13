@@ -7,8 +7,6 @@ import {
   View,
   Button,
 } from "react-native";
-// the @expo/vector-icons library is part of expo package
-import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 // can import AppText this way when an index.js files has been created in the AppText file
 import AppText from "../components/AppText";
@@ -29,7 +27,7 @@ function WelcomeScreen() {
         <Image source={require("../assets/logo-red.png")} style={styles.logo} />
         <Text style={styles.tagline}>Sell What You Don't Need</Text>
       </View>
-      {/* <MaterialCommunityIcons name="email" size={100} color="dodgerblue" /> */}
+
       <View style={styles.buttonsContainer}>
         <AppButton title="Login" />
         <AppButton title="Register" color="secondary" />

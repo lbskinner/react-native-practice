@@ -7,11 +7,12 @@ import {
   View,
   Button,
 } from "react-native";
-// the library below is part of expo package
+// the @expo/vector-icons library is part of expo package
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 // can import AppText this way when an index.js files has been created in the AppText file
 import AppText from "../components/AppText";
+import AppButton from "../components/AppButton";
 // import AppText from "../components/AppText/AppText";
 
 import colors from "../config/colors";
@@ -20,19 +21,18 @@ import { Colors } from "react-native/Libraries/NewAppScreen";
 function WelcomeScreen() {
   return (
     <ImageBackground
+      blurRadius={10}
       source={require("../assets/background.jpg")}
       style={styles.background}
     >
       <View style={styles.logoContainer}>
         <Image source={require("../assets/logo-red.png")} style={styles.logo} />
-        <AppText>Sell What You Don't Need</AppText>
+        <Text style={styles.tagline}>Sell What You Don't Need</Text>
       </View>
       {/* <MaterialCommunityIcons name="email" size={100} color="dodgerblue" /> */}
-      <View style={styles.loginButton}>
-        <Button title="Login" color="#fff" />
-      </View>
-      <View style={styles.registerButton}>
-        <Button title="Register" color="#fff" />
+      <View style={styles.buttonsContainer}>
+        <AppButton title="Login" />
+        <AppButton title="Register" color="secondary" />
       </View>
     </ImageBackground>
   );
@@ -44,10 +44,9 @@ const styles = StyleSheet.create({
     justifyContent: "flex-end",
     alignItems: "center",
   },
-  loginButton: {
+  buttonsContainer: {
+    padding: 20,
     width: "100%",
-    height: 70,
-    backgroundColor: "#fc5c65",
   },
   logo: {
     width: 100,
@@ -58,10 +57,10 @@ const styles = StyleSheet.create({
     top: 70,
     alignItems: "center",
   },
-  registerButton: {
-    width: "100%",
-    height: 70,
-    backgroundColor: colors.secondary,
+  tagline: {
+    fontSize: 25,
+    fontWeight: "600",
+    paddingVertical: 20,
   },
 });
 

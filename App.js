@@ -8,9 +8,9 @@ import AppButton from "./app/components/AppButton";
 export default function App() {
   return (
     <View style={styles.container}>
-      {/* <WelcomeScreen /> */}
+      <WelcomeScreen />
       {/* <ViewImageScreen /> */}
-      <AppButton title="Login" onPress={() => console.log("Button Clicked")} />
+      {/* <AppButton title="Login" onPress={() => console.log("Button Clicked")} /> */}
     </View>
   );
 }
@@ -18,8 +18,8 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "center",
+    flexDirection: "column",
+    // justifyContent: "center",
+    // alignItems: "center",
   },
 });

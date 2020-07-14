@@ -6,14 +6,16 @@ import ViewImageScreen from "./app/screens/ViewImageScreen";
 import AppButton from "./app/components/AppButton";
 import Card from "./app/components/Card";
 import ListingDetailsScreen from "./app/screens/ListingDetailsScreen";
+import MessagesScreen from "./app/screens/MessagesScreen";
 export default function App() {
   return (
     // <ListingDetailsScreen />
 
     <View style={styles.container}>
       {/* <WelcomeScreen /> */}
-      <ViewImageScreen />
+      {/* <ViewImageScreen /> */}
       {/* <AppButton title="Login" onPress={() => console.log("Button Clicked")} /> */}
+      <MessagesScreen />
     </View>
   );
 }

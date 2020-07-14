@@ -11,6 +11,7 @@ const styles = StyleSheet.create({
   screen: {
     // can also install expo constants and access the statusBarHeight (android-24, IOS-44)
     paddingTop: Constants.statusBarHeight,
+    flex: 1,
   },
 });
 

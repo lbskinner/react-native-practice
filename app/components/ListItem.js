@@ -1,23 +1,27 @@
 import React from "react";
 import { View, Image, StyleSheet, TouchableHighlight } from "react-native";
+import Swipeable from "react-native-gesture-handler/Swipeable";
+
 import AppText from "./AppText";
 import colors from "../config/colors";
 
-function ListItem({ title, subTitle, image, onPress }) {
+function ListItem({ title, subTitle, image, onPress, renderRightActions }) {
   return (
-    <TouchableHighlight underlayColor={colors.light} onPress={onPress}>
-      {/* set the flex direction to row to lay them out horizontally next to each
+    <Swipeable renderRightActions={renderRightActions}>
+      <TouchableHighlight underlayColor={colors.light} onPress={onPress}>
+        {/* set the flex direction to row to lay them out horizontally next to each
       other */}
-      <View style={styles.container}>
-        <Image style={styles.image} source={image} />
-        {/* by default, all containers flex direction are set to column 
+        <View style={styles.container}>
+          <Image style={styles.image} source={image} />
+          {/* by default, all containers flex direction are set to column 
       adding another container here so the content inside are all set to column */}
-        <View>
-          <AppText style={styles.title}>{title}</AppText>
-          <AppText style={styles.subTitle}>{subTitle}</AppText>
+          <View>
+            <AppText style={styles.title}>{title}</AppText>
+            <AppText style={styles.subTitle}>{subTitle}</AppText>
+          </View>
         </View>
-      </View>
-    </TouchableHighlight>
+      </TouchableHighlight>
+    </Swipeable>
   );
 }
 

@@ -12,12 +12,14 @@ import Icon from "./app/components/Icon";
 import ListItem from "./app/components/ListItem";
 import AccountScreen from "./app/screens/AccountScreen";
 import ListingsScreen from "./app/screens/ListingsScreen";
+import AppTextInput from "./app/components/AppTextInput";
 
 export default function App() {
   const [firstName, setFirstName] = useState("");
   return (
     <Screen>
-      <Text>{firstName}</Text>
+      <AppTextInput placeholder="Username" icon="email" />
+      {/* <Text>{firstName}</Text>
       <TextInput
         secureTextEntry // same as secureTextEntry={true}
         // clearButtonMode onlys works on IOS
@@ -30,7 +32,7 @@ export default function App() {
           borderBottomColor: "#ccc",
           borderBottomWidth: 1,
         }}
-      />
+      /> */}
     </Screen>
   );
 }

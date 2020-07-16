@@ -1,6 +1,13 @@
 import { StatusBar } from "expo-status-bar";
 import React, { useState } from "react";
-import { StyleSheet, Text, View, Button, TextInput } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Button,
+  TextInput,
+  Switch,
+} from "react-native";
 import WelcomeScreen from "./app/screens/WelcomeScreen";
 import ViewImageScreen from "./app/screens/ViewImageScreen";
 import AppButton from "./app/components/AppButton";
@@ -15,24 +22,11 @@ import ListingsScreen from "./app/screens/ListingsScreen";
 import AppTextInput from "./app/components/AppTextInput";
 
 export default function App() {
-  const [firstName, setFirstName] = useState("");
+  const [isNew, setIsNew] = useState(false);
   return (
     <Screen>
-      <AppTextInput placeholder="Username" icon="email" />
-      {/* <Text>{firstName}</Text>
-      <TextInput
-        secureTextEntry // same as secureTextEntry={true}
-        // clearButtonMode onlys works on IOS
-        clearButtonMode="always"
-        keyboardType="numeric"
-        maxLength={5}
-        onChangeText={(text) => setFirstName(text)}
-        placeholder="First Name"
-        style={{
-          borderBottomColor: "#ccc",
-          borderBottomWidth: 1,
-        }}
-      /> */}
+      {/* <AppTextInput placeholder="Username" icon="email" /> */}
+      <Switch value={isNew} onValueChange={(newValue) => setIsNew(newValue)} />
     </Screen>
   );
 }

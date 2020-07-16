@@ -1,10 +1,16 @@
 import React from "react";
-import { SafeAreaView, StyleSheet, ImagePropTypes } from "react-native";
+import { SafeAreaView, StyleSheet, ImagePropTypes, View } from "react-native";
 // constants provides information on the platform
 import Constants from "expo-constants";
 
 function Screen({ children, style }) {
-  return <SafeAreaView style={[styles.screen, style]}>{children}</SafeAreaView>;
+  return (
+    // SafeAreaView does not support horizontal padding currently
+    // added a View inside the SafeAreaView as a work around
+    <SafeAreaView style={[styles.screen, style]}>
+      <View style={style}>{children}</View>
+    </SafeAreaView>
+  );
 }
 
 const styles = StyleSheet.create({

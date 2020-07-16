@@ -3,8 +3,8 @@ import { SafeAreaView, StyleSheet, ImagePropTypes } from "react-native";
 // constants provides information on the platform
 import Constants from "expo-constants";
 
-function Screen({ children }) {
-  return <SafeAreaView style={styles.screen}>{children}</SafeAreaView>;
+function Screen({ children, style }) {
+  return <SafeAreaView style={[styles.screen, style]}>{children}</SafeAreaView>;
 }
 
 const styles = StyleSheet.create({

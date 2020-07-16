@@ -9,7 +9,7 @@ function ListItem({
   title,
   subTitle,
   image,
-  ImageComponent,
+  IconComponent,
   onPress,
   renderRightActions,
 }) {
@@ -19,7 +19,7 @@ function ListItem({
         {/* set the flex direction to row to lay them out horizontally next to each
       other */}
         <View style={styles.container}>
-          {ImageComponent}
+          {IconComponent}
           {/* if no image, don't leave room for image */}
           {image && <Image style={styles.image} source={image} />}
           {/* by default, all containers flex direction are set to column 
@@ -38,6 +38,7 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
     padding: 15,
+    backgroundColor: colors.white,
   },
   detailsContainer: {
     marginLeft: 10,

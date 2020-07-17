@@ -1,13 +1,24 @@
 import React, { useState } from "react";
 import { StyleSheet, Image } from "react-native";
 import { Formik } from "formik";
+import * as Yup from "yup";
+
 import Screen from "../components/Screen";
 import AppTextInput from "../components/AppTextInput";
 import AppButton from "../components/AppButton";
+import AppText from "../components/AppText";
+
+const validationSchema = Yup.object().shape({
+  // can chain multiple validations methods
+  // use label for display validation errors
+  email: Yup.string().required().email().label("Email"),
+  password: Yup.string().required().min(4).label("Password"),
+});
 
 function LoginScreen() {
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
+  // formik tracks states, so no longer needs local state variables
+  //   const [email, setEmail] = useState();
+  //   const [password, setPassword] = useState();
 
   return (
     <Screen style={styles.container}>
@@ -15,33 +26,33 @@ function LoginScreen() {
       <Formik
         initialValues={{ email: "", password: "" }}
         onSubmit={() => console.log(values)}
+        validationSchema={validationSchema}
       >
         {/* handleChange and handleSubmit are functions provided by formik */}
-        {({ handleChange, handleSubmit }) => (
+        {({ handleChange, handleSubmit, errors }) => (
           <>
             <AppTextInput
               autoCapitalize="none"
               autoCorrect={false}
               icon="email"
               keyboardType="email-address"
-              onChangeText={(text) => setEmail(text)}
+              onChangeText={handleChange("email")}
               placeholder="Email"
               // only works on IOS
               textContentType="emailAddress"
             />
+            <AppText style={{ color: "red" }}>{errors.email}</AppText>
             <AppTextInput
               autoCapitalize="none"
               autoCorrect={false}
               icon="lock"
-              onChangeText={(text) => setPassword(text)}
+              onChangeText={handleChange("password")}
               placeholder="Password"
               secureTextEntry
               textContentType="password"
             />
-            <AppButton
-              title="Login"
-              onPress={() => console.log(email, password)}
-            />
+            <AppText style={{ color: "red" }}>{errors.password}</AppText>
+            <AppButton title="Login" onPress={handleSubmit} />
           </>
         )}
       </Formik>

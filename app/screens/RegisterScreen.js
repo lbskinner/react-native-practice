@@ -18,7 +18,7 @@ function RegisterScreen() {
     <Screen style={styles.container}>
       <AppForm
         initialValues={{ name: "", email: "", password: "" }}
-        onSubmit={() => console.log(values)}
+        onSubmit={(values) => console.log(values)}
         validationSchema={validationSchema}
       >
         <AppFormField

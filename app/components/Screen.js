@@ -8,7 +8,7 @@ function Screen({ children, style }) {
     // SafeAreaView does not support horizontal padding currently
     // added a View inside the SafeAreaView as a work around
     <SafeAreaView style={[styles.screen, style]}>
-      <View style={style}>{children}</View>
+      <View style={[styles.view, style]}>{children}</View>
     </SafeAreaView>
   );
 }
@@ -17,6 +17,9 @@ const styles = StyleSheet.create({
   screen: {
     // can also install expo constants and access the statusBarHeight (android-24, IOS-44)
     paddingTop: Constants.statusBarHeight,
+    flex: 1,
+  },
+  view: {
     flex: 1,
   },
 });

@@ -45,6 +45,8 @@ function MessagesScreen() {
         keyExtractor={(message) => message.id.toString()}
         renderItem={({ item }) => (
           <ListItem
+            // set showChevrons to true to display it on the screen
+            showChevrons={true}
             title={item.title}
             subTitle={item.description}
             image={item.image}

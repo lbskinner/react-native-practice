@@ -4,7 +4,7 @@ import { useFormikContext } from "formik";
 import AppTextInput from "../AppTextInput";
 import ErrorMessage from "./ErrorMessage";
 
-function AppFormField({ name, ...otherProps }) {
+function AppFormField({ name, width, ...otherProps }) {
   {
     /* handleChange is a function provided by formik */
   }
@@ -16,6 +16,7 @@ function AppFormField({ name, ...otherProps }) {
         // onBlur is a callback when the text input is blurred - remove focus
         onBlur={() => setFieldTouched(name)}
         onChangeText={handleChange(name)}
+        width={width}
         {...otherProps}
       />
       <ErrorMessage error={errors[name]} visible={touched[name]} />

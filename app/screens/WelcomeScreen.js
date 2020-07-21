@@ -1,16 +1,9 @@
 import React from "react";
-import {
-  ImageBackground,
-  StyleSheet,
-  Image,
-  Text,
-  View,
-  Button,
-} from "react-native";
+import { ImageBackground, StyleSheet, Image, Text, View } from "react-native";
 
 // can import AppText this way when an index.js files has been created in the AppText file
 import AppText from "../components/AppText";
-import AppButton from "../components/AppButton";
+import Button from "../components/Button";
 // import AppText from "../components/AppText/AppText";
 
 import colors from "../config/colors";
@@ -29,8 +22,8 @@ function WelcomeScreen() {
       </View>
 
       <View style={styles.buttonsContainer}>
-        <AppButton title="Login" />
-        <AppButton title="Register" color="secondary" />
+        <Button title="Login" />
+        <Button title="Register" color="secondary" />
       </View>
     </ImageBackground>
   );

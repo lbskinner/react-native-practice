@@ -28,8 +28,14 @@ function ListItem({
           {/* by default, all containers flex direction are set to column 
       adding another container here so the content inside are all set to column */}
           <View style={styles.detailsContainer}>
-            <AppText style={styles.title}>{title}</AppText>
-            {subTitle && <AppText style={styles.subTitle}>{subTitle}</AppText>}
+            <AppText style={styles.title} numberOfLines={1}>
+              {title}
+            </AppText>
+            {subTitle && (
+              <AppText style={styles.subTitle} numberOfLines={2}>
+                {subTitle}
+              </AppText>
+            )}
           </View>
           {showChevrons && (
             <MaterialCommunityIcons

@@ -1,10 +1,7 @@
 import React from "react";
 import { ImageBackground, StyleSheet, Image, Text, View } from "react-native";
 
-// can import AppText this way when an index.js files has been created in the AppText file
-import AppText from "../components/AppText";
 import Button from "../components/Button";
-// import AppText from "../components/AppText/AppText";
 
 import colors from "../config/colors";
 import { Colors } from "react-native/Libraries/NewAppScreen";

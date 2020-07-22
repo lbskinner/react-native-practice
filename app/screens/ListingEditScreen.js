@@ -3,9 +3,9 @@ import { StyleSheet } from "react-native";
 import * as Yup from "yup";
 
 import {
-  AppForm,
-  AppFormField, // can also do AppFromField as AppField to shorten the names used below
-  AppFormPicker,
+  Form,
+  FormField, // can also do FromField as Field to shorten the names used below
+  FormPicker,
   SubmitButton,
 } from "../components/forms";
 import Screen from "../components/Screen";
@@ -63,7 +63,7 @@ const categories = [
 function ListingEditScreen() {
   return (
     <Screen style={styles.container}>
-      <AppForm
+      <Form
         initialValues={{
           title: "",
           // price is a number but it is initialized as a string so it won't display 0 upon screen load
@@ -74,15 +74,15 @@ function ListingEditScreen() {
         onSubmit={(values) => console.log(values)}
         validationSchema={validationSchema}
       >
-        <AppFormField maxLength={255} name="title" placeholder="Title" />
-        <AppFormField
+        <FormField maxLength={255} name="title" placeholder="Title" />
+        <FormField
           keyBoardType="numeric"
           maxLength={8}
           name="price"
           placeholder="Price"
           width={120}
         />
-        <AppFormPicker
+        <FormPicker
           items={categories}
           name="category"
           numberOfColumns={3}
@@ -90,7 +90,7 @@ function ListingEditScreen() {
           placeholder="Category"
           width="50%"
         />
-        <AppFormField
+        <FormField
           maxLength={255}
           multiline
           name="description"
@@ -98,7 +98,7 @@ function ListingEditScreen() {
           placeholder="Description"
         />
         <SubmitButton title="Post" />
-      </AppForm>
+      </Form>
     </Screen>
   );
 }

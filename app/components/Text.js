@@ -2,7 +2,7 @@
 import React from "react";
 import { Text } from "react-native";
 
-import defaultStyles from "../../config/styles";
+import defaultStyles from "../config/styles";
 // import styles from "./styles";
 
 // destructure the children props so don't need to use props.children

@@ -3,8 +3,8 @@ import { View, Image, StyleSheet, TouchableHighlight } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import Swipeable from "react-native-gesture-handler/Swipeable";
 
-import Text from "./Text";
-import colors from "../config/colors";
+import Text from "../Text";
+import colors from "../../config/colors";
 
 function ListItem({
   title,

@@ -49,7 +49,13 @@ const StackNavigator = () => (
     {/* first screen is the default screen showing or use initialRouteName */}
     {/* name is used to define the routes and shows as the title of the bar  */}
     <Stack.Screen name="Tweets" component={Tweets} />
-    <Stack.Screen name="TweetDetails" component={TweetDetails} />
+    <Stack.Screen
+      name="TweetDetails"
+      component={TweetDetails}
+      // options={{ title: "Tweet Details" }} - set static screen title
+      // set dynamic screen title
+      options={({ route }) => ({ title: route.params.id })}
+    />
   </Stack.Navigator>
 );
 

@@ -24,19 +24,20 @@ const Link = () => {
 const Tweets = ({ navigation }) => (
   <Screen>
     <Text>Tweets</Text>
-    <Link />
-    {/* <Button
+    {/* <Link /> */}
+    <Button
       title="View Tweet"
       // the navigate method makes sure there is a single route/screen/instance
       // push method pushes a new route onto the stack, creates another instance
-      onPress={() => navigation.navigate("TweetDetails")}
-    /> */}
+      onPress={() => navigation.navigate("TweetDetails", { id: 1 })}
+    />
   </Screen>
 );
 
-const TweetDetails = () => (
+const TweetDetails = ({ route }) => (
+  // child component don't have access to route, need to use useRoute hook
   <Screen>
-    <Text>Tweet Details</Text>
+    <Text>Tweet Details {route.params.id}</Text>
   </Screen>
 );
 

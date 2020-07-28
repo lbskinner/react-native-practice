@@ -3,7 +3,7 @@ import * as ImagePicker from "expo-image-picker";
 import * as Permissions from "expo-permissions";
 import { StyleSheet, Button, Image, Text } from "react-native";
 import { createStackNavigator } from "@react-navigation/stack";
-import { NavigationContainer } from "@react-navigation/native";
+import { NavigationContainer, useNavigation } from "@react-navigation/native";
 
 import Screen from "./app/components/Screen";
 import ImageInput from "./app/components/ImageInput";
@@ -11,9 +11,26 @@ import ImageInputList from "./app/components/ImageInputList";
 import ListingsScreen from "./app/screens/ListingsScreen";
 import ListingEditScreen from "./app/screens/ListingEditScreen";
 
-const Tweets = () => (
+const Link = () => {
+  // navigate method only available to the stack screens
+  // child component needs to use hook to access the navigation method
+  const navigation = useNavigation();
+
+  return (
+    <Button title="Click" onPress={() => navigation.navigate("TweetDetails")} />
+  );
+};
+
+const Tweets = ({ navigation }) => (
   <Screen>
     <Text>Tweets</Text>
+    <Link />
+    {/* <Button
+      title="View Tweet"
+      // the navigate method makes sure there is a single route/screen/instance
+      // push method pushes a new route onto the stack, creates another instance
+      onPress={() => navigation.navigate("TweetDetails")}
+    /> */}
   </Screen>
 );
 
@@ -30,8 +47,8 @@ const StackNavigator = () => (
   <Stack.Navigator initialRouteName="Tweets">
     {/* first screen is the default screen showing or use initialRouteName */}
     {/* name is used to define the routes and shows as the title of the bar  */}
-    <Stack.Screen name="TweetDetails" component={TweetDetails} />
     <Stack.Screen name="Tweets" component={Tweets} />
+    <Stack.Screen name="TweetDetails" component={TweetDetails} />
   </Stack.Navigator>
 );
 

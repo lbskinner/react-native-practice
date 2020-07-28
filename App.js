@@ -45,10 +45,25 @@ const TweetDetails = ({ route }) => (
 const Stack = createStackNavigator();
 const StackNavigator = () => (
   // the StackNavigator components knows how to navigate between the different screens
-  <Stack.Navigator initialRouteName="Tweets">
+  <Stack.Navigator
+    initialRouteName="Tweets"
+    screenOptions={{
+      headerStyle: { backgroundColor: "dodgerblue" },
+      headerTintColor: "white",
+    }}
+  >
     {/* first screen is the default screen showing or use initialRouteName */}
     {/* name is used to define the routes and shows as the title of the bar  */}
-    <Stack.Screen name="Tweets" component={Tweets} />
+    <Stack.Screen
+      name="Tweets"
+      component={Tweets}
+      // options within the screen only affects the screen
+      options={{
+        headerStyle: { backgroundColor: "tomato" },
+        headerTintColor: "white",
+        headerShown: false,
+      }}
+    />
     <Stack.Screen
       name="TweetDetails"
       component={TweetDetails}

@@ -8,15 +8,9 @@ const Stack = createStackNavigator();
 
 const FeedNavigator = () => (
   // using the modal option, can pull it down, don't need the back button anymore
-  <Stack.Navigator mode="modal">
+  <Stack.Navigator mode="modal" screenOptions={{ headerShown: false }}>
     <Stack.Screen name="Listings" component={ListingsScreen} />
-    <Stack.Screen
-      name="ListingDetails"
-      component={ListingDetailsScreen}
-      options={{
-        headerShown: false,
-      }}
-    />
+    <Stack.Screen name="ListingDetails" component={ListingDetailsScreen} />
   </Stack.Navigator>
 );
 

@@ -17,105 +17,15 @@ import LoginScreen from "./app/screens/LoginScreen";
 import RegisterScreen from "./app/screens/RegisterScreen";
 import AuthNavigator from "./app/navigation/AuthNavigator";
 import navigationTheme from "./app/navigation/navigationTheme";
-
-const Link = () => {
-  // navigate method only available to the stack screens
-  // child component needs to use hook to access the navigation method
-  const navigation = useNavigation();
-
-  return (
-    <Button title="Click" onPress={() => navigation.navigate("TweetDetails")} />
-  );
-};
-
-const Tweets = ({ navigation }) => (
-  <Screen>
-    <Text>Tweets</Text>
-    {/* <Link /> */}
-    <Button
-      title="View Tweet"
-      // the navigate method makes sure there is a single route/screen/instance
-      // push method pushes a new route onto the stack, creates another instance
-      onPress={() => navigation.navigate("TweetDetails", { id: 1 })}
-    />
-  </Screen>
-);
-
-const TweetDetails = ({ route }) => (
-  // child component don't have access to route, need to use useRoute hook
-  <Screen>
-    <Text>Tweet Details {route.params.id}</Text>
-  </Screen>
-);
-
-// createStackNavigator gives an object
-const Stack = createStackNavigator();
-const StackNavigator = () => (
-  // the StackNavigator components knows how to navigate between the different screens
-  <Stack.Navigator
-    initialRouteName="Tweets"
-    screenOptions={{
-      headerStyle: { backgroundColor: "dodgerblue" },
-      headerTintColor: "white",
-    }}
-  >
-    {/* first screen is the default screen showing or use initialRouteName */}
-    {/* name is used to define the routes and shows as the title of the bar  */}
-    <Stack.Screen
-      name="Tweets"
-      component={Tweets}
-      // options within the screen only affects the screen
-      options={{
-        headerStyle: { backgroundColor: "tomato" },
-        headerTintColor: "white",
-        headerShown: false,
-      }}
-    />
-    <Stack.Screen
-      name="TweetDetails"
-      component={TweetDetails}
-      // options={{ title: "Tweet Details" }} - set static screen title
-      // set dynamic screen title
-      options={({ route }) => ({ title: route.params.id })}
-    />
-  </Stack.Navigator>
-);
-
-const Account = () => (
-  <Screen>
-    <Text>Account</Text>
-  </Screen>
-);
-
-const Tab = createBottomTabNavigator();
-const TabNavigator = () => (
-  <Tab.Navigator
-    tabBarOptions={{
-      activeBackgroundColor: "tomato",
-      activeTintColor: "white",
-      inactiveBackgroundColor: "#eee",
-      inactiveTintColor: "black",
-    }}
-  >
-    <Tab.Screen
-      name="Feed"
-      component={StackNavigator}
-      options={{
-        tabBarIcon: ({ size, color }) => (
-          <MaterialCommunityIcons name="home" size={size} color={color} />
-        ),
-      }}
-    />
-    <Tab.Screen name="Account" component={Account} />
-  </Tab.Navigator>
-);
+import AccountScreen from "./app/screens/AccountScreen";
+import AppNavigator from "./app/navigation/AppNavigator";
 
 export default function App() {
   return (
     <NavigationContainer theme={navigationTheme}>
       {/* render StackNavigator component instead of rendering the specific screens */}
-      <AuthNavigator />
-      {/* <TabNavigator /> */}
+      {/* <AuthNavigator /> */}
+      <AppNavigator />
     </NavigationContainer>
   );
 }

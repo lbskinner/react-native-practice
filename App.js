@@ -16,6 +16,7 @@ import WelcomeScreen from "./app/screens/WelcomeScreen";
 import LoginScreen from "./app/screens/LoginScreen";
 import RegisterScreen from "./app/screens/RegisterScreen";
 import AuthNavigator from "./app/navigation/AuthNavigator";
+import navigationTheme from "./app/navigation/navigationTheme";
 
 const Link = () => {
   // navigate method only available to the stack screens
@@ -111,7 +112,7 @@ const TabNavigator = () => (
 
 export default function App() {
   return (
-    <NavigationContainer>
+    <NavigationContainer theme={navigationTheme}>
       {/* render StackNavigator component instead of rendering the specific screens */}
       <AuthNavigator />
       {/* <TabNavigator /> */}

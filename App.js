@@ -12,6 +12,10 @@ import ImageInput from "./app/components/ImageInput";
 import ImageInputList from "./app/components/ImageInputList";
 import ListingsScreen from "./app/screens/ListingsScreen";
 import ListingEditScreen from "./app/screens/ListingEditScreen";
+import WelcomeScreen from "./app/screens/WelcomeScreen";
+import LoginScreen from "./app/screens/LoginScreen";
+import RegisterScreen from "./app/screens/RegisterScreen";
+import AuthNavigator from "./app/navigation/AuthNavigator";
 
 const Link = () => {
   // navigate method only available to the stack screens
@@ -109,8 +113,8 @@ export default function App() {
   return (
     <NavigationContainer>
       {/* render StackNavigator component instead of rendering the specific screens */}
-      {/* <StackNavigator /> */}
-      <TabNavigator />
+      <AuthNavigator />
+      {/* <TabNavigator /> */}
     </NavigationContainer>
   );
 }

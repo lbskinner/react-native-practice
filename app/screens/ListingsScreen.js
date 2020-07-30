@@ -9,36 +9,37 @@ import listingsApi from "../api/listings";
 import routes from "../navigation/routes";
 import Screen from "../components/Screen";
 import AppText from "../components/Text";
+import useApi from "../hooks/useApi";
 
 function ListingsScreen({ navigation }) {
-  const [listings, setListings] = useState([]);
-  const [error, setError] = useState(false);
-  const [loading, setLoading] = useState(false);
+  // pass the to the useApi hook and the call is made in the useApi hook when the request is called
+  // request: loadListings - rename request to loadListings
+  // data: listings - rename data to listings
+  const { data: listings, error, loading, request: loadListings } = useApi(
+    listingsApi.getListings
+  );
+
+  // when need to make multiple api calls, or don't want to use destructuring, can use signal object
+  // const getListingsApi = useApi(listingsApi.getListings);
 
   useEffect(() => {
+    // loadListings(1, 2, 3);
     loadListings();
+    // getListingsApi.request();
   }, []);
-
-  const loadListings = async () => {
-    setLoading(true);
-    const response = await listingsApi.getListings();
-    setLoading(false);
-
-    if (!response.ok) return setError(true);
-
-    setError(false);
-    setListings(response.data);
-  };
 
   return (
     <Screen style={styles.screen}>
+      {/* getListingsApi.error instead of error */}
       {error && (
         <>
           <AppText>Couldn't retrieve the listings.</AppText>
           <Button title="Retry" onPress={loadListings} />
         </>
       )}
+      {/* <ActivityIndicator visible={getListingsApi.loading} /> */}
       <ActivityIndicator visible={loading} />
+      {/* data={getListingsApi.data} */}
       <FlatList
         data={listings}
         keyExtractor={(listing) => listing.id.toString()}

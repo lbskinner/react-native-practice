@@ -24,8 +24,8 @@ export default function App() {
   return (
     <NavigationContainer theme={navigationTheme}>
       {/* render StackNavigator component instead of rendering the specific screens */}
-      <AuthNavigator />
-      {/* <AppNavigator /> */}
+      {/* <AuthNavigator /> */}
+      <AppNavigator />
     </NavigationContainer>
   );
 }

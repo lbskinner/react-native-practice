@@ -5,7 +5,7 @@ const endpoint = "/listings";
 // const getListings = (a, b, c) => client.get(endpoint);
 const getListings = () => client.get(endpoint);
 
-const addListing = (listing) => {
+const addListing = (listing, onUploadProgress) => {
   // content-type in header to specify the data type, by default it is application/json
   // need to send images - need to use multipart/form-data
   const data = new FormData();
@@ -24,7 +24,10 @@ const addListing = (listing) => {
 
   if (listing.location)
     data.append("location", JSON.stringify(listing.location));
-  return client.post(endpoint, data);
+  return client.post(endpoint, data, {
+    onUploadProgress: (progress) =>
+      onUploadProgress(progress.loaded / progress.total),
+  });
 };
 
 export default {

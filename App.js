@@ -47,16 +47,17 @@ export default function App() {
 
   demo();
 
-  return null;
-  // one common approach below
-  // netInfo.isInternetReachable ? <View></View> : <View></View>
-  // another common approach
-  // <Button disabled={!netInfo.isInternetReachable} title="Button" />
-  // <NavigationContainer theme={navigationTheme}>
-  //   {/* render StackNavigator component instead of rendering the specific screens */}
-  //   {/* <AuthNavigator /> */}
-  //   <AppNavigator />
-  // </NavigationContainer>
+  return (
+    // one common approach below
+    // netInfo.isInternetReachable ? <View></View> : <View></View>
+    // another common approach
+    // <Button disabled={!netInfo.isInternetReachable} title="Button" />
+    <NavigationContainer theme={navigationTheme}>
+      {/* render StackNavigator component instead of rendering the specific screens */}
+      {/* <AuthNavigator /> */}
+      <AppNavigator />
+    </NavigationContainer>
+  );
 }
 
 const styles = StyleSheet.create({

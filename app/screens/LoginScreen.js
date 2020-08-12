@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { StyleSheet, Image } from "react-native";
 import * as Yup from "yup";
 import jwtDecode from "jwt-decode";
@@ -11,6 +11,7 @@ import {
   SubmitButton,
 } from "../components/forms";
 import authApi from "../api/auth";
+import AuthContext from "../auth/context";
 
 const validationSchema = Yup.object().shape({
   // can chain multiple validations methods
@@ -23,7 +24,7 @@ function LoginScreen() {
   // formik tracks states, so no longer needs local state variables
   //   const [email, setEmail] = useState();
   //   const [password, setPassword] = useState();
-
+  const authContext = useContext(AuthContext);
   const [loginFailed, setLoginFailed] = useState(false);
 
   const handleSubmit = async ({ email, password }) => {
@@ -31,7 +32,7 @@ function LoginScreen() {
     if (!result.ok) return setLoginFailed(true);
     setLoginFailed(false);
     const user = jwtDecode(result.data);
-    console.log(user);
+    authContext.setUser(user);
   };
 
   return (

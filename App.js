@@ -17,48 +17,20 @@ import AuthNavigator from "./app/navigation/AuthNavigator";
 import navigationTheme from "./app/navigation/navigationTheme";
 import AccountScreen from "./app/screens/AccountScreen";
 import AppNavigator from "./app/navigation/AppNavigator";
-import NetInfo, { useNetInfo } from "@react-native-community/netinfo";
-import AsyncStorage from "@react-native-community/async-storage";
 import OfflineNotice from "./app/components/OfflineNotice";
+import AuthContext from "./app/auth/context";
 
 export default function App() {
-  // fetch() only fetch connection info once
-  // NetInfo.fetch().then((netInfo) => console.log(netInfo));
-  // typically call the NetInfo.addEventListener in componentDidMount in class component
-  // const unsubscribe = NetInfo.addEventListener((netInfo) => console.log(netInfo));
-
-  // usually call unsubscribe in componentWillUnmount in class component
-  // unsubscribe();
-
-  // use hooks in functional component
-  // const netInfo = useNetInfo();
-
-  const demo = async () => {
-    try {
-      await AsyncStorage.setItem("person", JSON.stringify({ id: 1 }));
-      const value = await AsyncStorage.getItem("person");
-      const person = JSON.parse(value);
-      console.log(person);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  demo();
+  const [user, setUser] = useState();
 
   return (
-    // one common approach below
-    // netInfo.isInternetReachable ? <View></View> : <View></View>
-    // another common approach
-    // <Button disabled={!netInfo.isInternetReachable} title="Button" />
-    <>
+    <AuthContext.Provider value={{ user, setUser }}>
       <OfflineNotice />
       <NavigationContainer theme={navigationTheme}>
         {/* render StackNavigator component instead of rendering the specific screens */}
-        <AuthNavigator />
-        {/* <AppNavigator /> */}
+        {user ? <AppNavigator /> : <AuthNavigator />}
       </NavigationContainer>
-    </>
+    </AuthContext.Provider>
   );
 }
 

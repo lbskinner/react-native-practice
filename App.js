@@ -55,8 +55,8 @@ export default function App() {
       <OfflineNotice />
       <NavigationContainer theme={navigationTheme}>
         {/* render StackNavigator component instead of rendering the specific screens */}
-        {/* <AuthNavigator /> */}
-        <AppNavigator />
+        <AuthNavigator />
+        {/* <AppNavigator /> */}
       </NavigationContainer>
     </>
   );

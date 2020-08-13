@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { StyleSheet, Button, Image, Text, View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
-import jwtDecode from "jwt-decode";
 import { AppLoading } from "expo";
 
 import Screen from "./app/components/Screen";
@@ -22,19 +21,16 @@ export default function App() {
   const [user, setUser] = useState();
   const [isReady, setIsReady] = useState(false);
 
-  const restoreToken = async () => {
-    const token = await authStorage.getToken();
-
-    if (!token) return;
-    // jewDecode(token) returns an object
-    setUser(jwtDecode(token));
+  const restoreUser = async () => {
+    const user = await authStorage.getUser();
+    if (user) setUser(user);
   };
 
   if (!isReady)
     return (
       // startAsync is called with the app is loaded
       // onFinish is an event get raised when the execution of the function is finished
-      <AppLoading startAsync={restoreToken} onFinish={() => setIsReady(true)} />
+      <AppLoading startAsync={restoreUser} onFinish={() => setIsReady(true)} />
     );
 
   return (

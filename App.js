@@ -1,11 +1,7 @@
 import React, { useEffect, useState } from "react";
-import * as ImagePicker from "expo-image-picker";
-import * as Permissions from "expo-permissions";
 import { StyleSheet, Button, Image, Text, View } from "react-native";
-import { createStackNavigator } from "@react-navigation/stack";
-import { NavigationContainer, useNavigation } from "@react-navigation/native";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { NavigationContainer } from "@react-navigation/native";
+import jwtDecode from "jwt-decode";
 
 import Screen from "./app/components/Screen";
 import ListingsScreen from "./app/screens/ListingsScreen";
@@ -19,9 +15,21 @@ import AccountScreen from "./app/screens/AccountScreen";
 import AppNavigator from "./app/navigation/AppNavigator";
 import OfflineNotice from "./app/components/OfflineNotice";
 import AuthContext from "./app/auth/context";
+import authStorage from "./app/auth/storage";
 
 export default function App() {
   const [user, setUser] = useState();
+
+  const restoreToken = async () => {
+    const token = await authStorage.getToken();
+    if (!token) return;
+    // jewDecode(token) returns an object
+    setUser(jwtDecode(token));
+  };
+
+  useEffect(() => {
+    restoreToken();
+  }, []); // add empty [] to call the restoreToken only once when the app is rendered
 
   return (
     <AuthContext.Provider value={{ user, setUser }}>

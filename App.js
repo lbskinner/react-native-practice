@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { StyleSheet, Button, Image, Text, View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import jwtDecode from "jwt-decode";
+import { AppLoading } from "expo";
 
 import Screen from "./app/components/Screen";
 import ListingsScreen from "./app/screens/ListingsScreen";
@@ -19,17 +20,22 @@ import authStorage from "./app/auth/storage";
 
 export default function App() {
   const [user, setUser] = useState();
+  const [isReady, setIsReady] = useState(false);
 
   const restoreToken = async () => {
     const token = await authStorage.getToken();
+
     if (!token) return;
     // jewDecode(token) returns an object
     setUser(jwtDecode(token));
   };
 
-  useEffect(() => {
-    restoreToken();
-  }, []); // add empty [] to call the restoreToken only once when the app is rendered
+  if (!isReady)
+    return (
+      // startAsync is called with the app is loaded
+      // onFinish is an event get raised when the execution of the function is finished
+      <AppLoading startAsync={restoreToken} onFinish={() => setIsReady(true)} />
+    );
 
   return (
     <AuthContext.Provider value={{ user, setUser }}>

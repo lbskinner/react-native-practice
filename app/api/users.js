@@ -4,6 +4,4 @@ import client from "./client";
 // used a single object
 const register = (userInfo) => client.post("/users", userInfo);
 
-export default {
-  register,
-};
+export default { register };

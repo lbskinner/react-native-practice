@@ -8,6 +8,7 @@ import Icon from "../components/Icon";
 import routes from "../navigation/routes";
 import AuthContext from "../auth/context";
 import authStorage from "../auth/storage";
+import useAuth from "../auth/useAuth";
 
 const menuItem = [
   {
@@ -28,7 +29,7 @@ const menuItem = [
 ];
 
 function AccountScreen({ navigation }) {
-  const { user, setUser } = useContext(AuthContext);
+  const { user, setUser } = useAuth();
 
   const handleLogout = () => {
     // logout user by setting it to null

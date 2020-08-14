@@ -36,6 +36,7 @@ const removeToken = async () => {
 };
 
 export default {
+  getToken,
   getUser,
   storeToken,
   removeToken,

@@ -1,8 +1,16 @@
 import { create } from "apisauce";
 import cache from "../utility/cache";
+import authStorage from "../auth/storage";
 
 const apiClient = create({
   baseURL: "http://192.168.1.15:9000/api",
+});
+
+apiClient.addAsyncRequestTransform(async (request) => {
+  const authToken = await authStorage.getToken();
+  if (!authToken) return;
+  // "x-auth-token" is the key
+  request.headers["x-auth-token"] = authToken;
 });
 
 // if can't call the server, use data from cache if available

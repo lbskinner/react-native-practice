@@ -31,7 +31,7 @@ function LoginScreen() {
     const result = await authApi.login(email, password);
     if (!result.ok) return setLoginFailed(true);
     setLoginFailed(false);
-    auth.login(result.data);
+    auth.logIn(result.data);
   };
 
   return (

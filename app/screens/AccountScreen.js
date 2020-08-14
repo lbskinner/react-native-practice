@@ -29,7 +29,7 @@ const menuItem = [
 // this component is only responsible for the UI
 // all business logic has been moved to the useAuth custom hook
 function AccountScreen({ navigation }) {
-  const { user, logout } = useAuth();
+  const { user, logOut } = useAuth();
   return (
     <Screen style={styles.screen}>
       <View style={styles.container}>
@@ -61,7 +61,7 @@ function AccountScreen({ navigation }) {
       <ListItem
         title="Log Out"
         IconComponent={<Icon name="logout" backgroundColor="#ffe66d" />}
-        onPress={() => logout()}
+        onPress={() => logOut()}
       />
     </Screen>
   );

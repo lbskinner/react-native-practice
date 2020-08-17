@@ -19,6 +19,9 @@
     },
     "web": {
       "favicon": "./app/assets/favicon.png"
+    },
+    "notification": {
+      "isoDisplayInForeground": true
     }
   }
 }

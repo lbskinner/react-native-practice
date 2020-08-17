@@ -13,10 +13,20 @@ import expoPushTokensApi from "../api/expoPushTokens";
 
 const Tab = createBottomTabNavigator();
 
+Notifications.setNotificationHandler({
+  handleNotification: async () => ({
+    shouldShowAlert: true,
+  }),
+});
+
 const AppNavigator = () => {
   useEffect(() => {
     registerForPushNotifications();
-  }, []); // add the empty array to call the function only once
+
+    Notifications.addNotificationReceivedListener((notification) => {
+      console.log(notification);
+    });
+  }, []); // add the empty array to call registerForPushNotifications()only once
 
   const registerForPushNotifications = async () => {
     try {

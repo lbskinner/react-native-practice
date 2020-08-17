@@ -10,21 +10,16 @@ import AccountNavigator from "./AccountNavigator";
 import NewListingButton from "./NewListingButton";
 import routes from "./routes";
 import expoPushTokensApi from "../api/expoPushTokens";
+import navigation from "../navigation/rootNavigation";
 
 const Tab = createBottomTabNavigator();
-
-Notifications.setNotificationHandler({
-  handleNotification: async () => ({
-    shouldShowAlert: true,
-  }),
-});
 
 const AppNavigator = () => {
   useEffect(() => {
     registerForPushNotifications();
 
     Notifications.addNotificationReceivedListener((notification) => {
-      console.log(notification);
+      navigation.navigate("Account");
     });
   }, []); // add the empty array to call registerForPushNotifications()only once
 
